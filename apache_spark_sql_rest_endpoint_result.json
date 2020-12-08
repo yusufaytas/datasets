@@ -1,0 +1,276 @@
+[
+    {
+        "id": 0,
+        "status": "COMPLETED",
+        "description": "show at SparkSQLMetricsTest.scala:28",
+        "planDescription": "== Parsed Logical Plan ==\n[1] GlobalLimit 21\n+- [2] LocalLimit 21\n   +- [3] Project [cast(id#3 as string) AS id#29, cast(name#4 as string) AS name#30, cast(department#5 as string) AS department#31, cast(address#12 as string) AS address#32, cast(city#13 as string) AS city#33, cast(country#14 as string) AS country#34]\n      +- [4] Sort [id#3 DESC NULLS LAST], true\n         +- [5] Filter (cast(id#3 as int) >= 2)\n            +- [6] Project [id#3, name#4, department#5, address#12, city#13, country#14]\n               +- [7] Join Inner, (id#3 = id#11)\n                  :- [8] LocalRelation [id#3, name#4, department#5]\n                  +- [9] LocalRelation [id#11, address#12, city#13, country#14]\n\n== Analyzed Logical Plan ==\nid: string, name: string, department: string, address: string, city: string, country: string\n[1] GlobalLimit 21\n+- [2] LocalLimit 21\n   +- [3] Project [cast(id#3 as string) AS id#29, cast(name#4 as string) AS name#30, cast(department#5 as string) AS department#31, cast(address#12 as string) AS address#32, cast(city#13 as string) AS city#33, cast(country#14 as string) AS country#34]\n      +- [4] Sort [id#3 DESC NULLS LAST], true\n         +- [5] Filter (cast(id#3 as int) >= 2)\n            +- [6] Project [id#3, name#4, department#5, address#12, city#13, country#14]\n               +- [7] Join Inner, (id#3 = id#11)\n                  :- [8] LocalRelation [id#3, name#4, department#5]\n                  +- [9] LocalRelation [id#11, address#12, city#13, country#14]\n\n== Optimized Logical Plan ==\n[1] GlobalLimit 21\n+- [2] LocalLimit 21\n   +- [3] Sort [id#3 DESC NULLS LAST], true\n      +- [4] Project [id#3, name#4, department#5, address#12, city#13, country#14]\n         +- [5] Join Inner, (id#3 = id#11)\n            :- [6] LocalRelation [id#3, name#4, department#5]\n            +- [7] LocalRelation [id#11, address#12, city#13, country#14]\n\n== Physical Plan ==\n[1] TakeOrderedAndProject(limit=21, orderBy=[id#3 DESC NULLS LAST], output=[id#3,name#4,department#5,address#12,city#13,country#14])\n+- *(3) [2] Project [id#3, name#4, department#5, address#12, city#13, country#14]\n   +- *(3) [3] SortMergeJoin [id#3], [id#11], Inner\n      :- *(1) [4] Sort [id#3 ASC NULLS FIRST], false, 0\n      :  +- [5] Exchange hashpartitioning(id#3, 200)\n      :     +- [6] LocalTableScan [id#3, name#4, department#5]\n      +- *(2) [7] Sort [id#11 ASC NULLS FIRST], false, 0\n         +- [8] Exchange hashpartitioning(id#11, 200)\n            +- [9] LocalTableScan [id#11, address#12, city#13, country#14]",
+        "submissionTime": "2020-12-08T04:32:09.640GMT",
+        "duration": 1338,
+        "runningJobIds": [],
+        "successJobIds": [
+            0
+        ],
+        "failedJobIds": [],
+        "nodes": [
+            {
+                "nodeId": 11,
+                "nodeName": "LocalTableScan",
+                "stageIds": [
+                    0,
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "number of output rows",
+                        "value": {
+                            "amount": "2"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 10,
+                "nodeName": "Exchange",
+                "stageIds": [
+                    0
+                ],
+                "metrics": [
+                    {
+                        "name": "data size total (min, med, max)",
+                        "value": {
+                            "amount": "174.0",
+                            "min": "87.0",
+                            "med": "87.0",
+                            "max": "87.0"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 9,
+                "nodeName": "Sort",
+                "wholeStageCodegenId": 8,
+                "stageIds": [
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "sort time total (min, med, max)",
+                        "value": {
+                            "amount": "0",
+                            "min": "0",
+                            "med": "0",
+                            "max": "0"
+                        }
+                    },
+                    {
+                        "name": "peak memory total (min, med, max)",
+                        "value": {
+                            "amount": "33659289.6",
+                            "min": "16882073.6",
+                            "med": "16882073.6",
+                            "max": "16882073.6"
+                        }
+                    },
+                    {
+                        "name": "spill size total (min, med, max)",
+                        "value": {
+                            "amount": "0.0",
+                            "min": "0.0",
+                            "med": "0.0",
+                            "max": "0.0"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 8,
+                "nodeName": "WholeStageCodegen",
+                "stageIds": [
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "duration total (min, med, max)",
+                        "value": {
+                            "amount": "55",
+                            "min": "27",
+                            "med": "28",
+                            "max": "28"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 7,
+                "nodeName": "LocalTableScan",
+                "stageIds": [
+                    1,
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "number of output rows",
+                        "value": {
+                            "amount": "2"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 6,
+                "nodeName": "Exchange",
+                "stageIds": [
+                    1
+                ],
+                "metrics": [
+                    {
+                        "name": "data size total (min, med, max)",
+                        "value": {
+                            "amount": "142.0",
+                            "min": "71.0",
+                            "med": "71.0",
+                            "max": "71.0"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 5,
+                "nodeName": "Sort",
+                "wholeStageCodegenId": 4,
+                "stageIds": [
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "sort time total (min, med, max)",
+                        "value": {
+                            "amount": "0",
+                            "min": "0",
+                            "med": "0",
+                            "max": "0"
+                        }
+                    },
+                    {
+                        "name": "peak memory total (min, med, max)",
+                        "value": {
+                            "amount": "46661632.0",
+                            "min": "65536.0",
+                            "med": "65536.0",
+                            "max": "16882073.6"
+                        }
+                    },
+                    {
+                        "name": "spill size total (min, med, max)",
+                        "value": {
+                            "amount": "0.0",
+                            "min": "0.0",
+                            "med": "0.0",
+                            "max": "0.0"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 4,
+                "nodeName": "WholeStageCodegen",
+                "stageIds": [
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "duration total (min, med, max)",
+                        "value": {
+                            "amount": "2300",
+                            "min": "1",
+                            "med": "4",
+                            "max": "69"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 3,
+                "nodeName": "SortMergeJoin",
+                "wholeStageCodegenId": 1,
+                "stageIds": [
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "number of output rows",
+                        "value": {
+                            "amount": "2"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 2,
+                "nodeName": "Project",
+                "wholeStageCodegenId": 1,
+                "stageIds": [],
+                "metrics": []
+            },
+            {
+                "nodeId": 1,
+                "nodeName": "WholeStageCodegen",
+                "stageIds": [
+                    2
+                ],
+                "metrics": [
+                    {
+                        "name": "duration total (min, med, max)",
+                        "value": {
+                            "amount": "267",
+                            "min": "0",
+                            "med": "2",
+                            "max": "55"
+                        }
+                    }
+                ]
+            },
+            {
+                "nodeId": 0,
+                "nodeName": "TakeOrderedAndProject",
+                "stageIds": [],
+                "metrics": []
+            }
+        ],
+        "edges": [
+            {
+                "fromId": 2,
+                "toId": 0
+            },
+            {
+                "fromId": 3,
+                "toId": 2
+            },
+            {
+                "fromId": 5,
+                "toId": 3
+            },
+            {
+                "fromId": 6,
+                "toId": 5
+            },
+            {
+                "fromId": 7,
+                "toId": 6
+            },
+            {
+                "fromId": 9,
+                "toId": 3
+            },
+            {
+                "fromId": 10,
+                "toId": 9
+            },
+            {
+                "fromId": 11,
+                "toId": 10
+            }
+        ]
+    }
+]
