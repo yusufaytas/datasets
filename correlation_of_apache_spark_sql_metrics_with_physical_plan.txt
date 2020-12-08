@@ -1,0 +1,22 @@
+== SQL Metrics ==
+Execution Id     : 0
+Duration         : 1338 msecs
+Submission Time  : Mon Dec 07 20:32:09 PST 2020
+Completion Time  : Mon Dec 07 20:32:10 PST 2020
+Description      : show at SparkSQLMetricsTest.scala:28
+Jobs             : 0
+Stages           : 0, 1, 2
+           
+(NodeId: 11) LocalTableScan [CodegenId: ] [StageIds: 0,2] Metrics: [number of output rows: 2]
+(NodeId: 10) Exchange [CodegenId: ] [StageIds: 0] Metrics: [data size total (min, med, max): 174.0 B (87.0 B, 87.0 B, 87.0 B)]
+(NodeId: 9) Sort [CodegenId: 8] [StageIds: 2] Metrics: [sort time total (min, med, max): 0 ms (0 ms, 0 ms, 0 ms) - peak memory total (min, med, max): 32.1 MB (16.1 MB, 16.1 MB, 16.1 MB) - spill size total (min, med, max): 0.0 B (0.0 B, 0.0 B, 0.0 B)]
+(NodeId: 8) WholeStageCodegen [CodegenId: ] [StageIds: 2] Metrics: [duration total (min, med, max): 55 ms (27 ms, 28 ms, 28 ms)]
+(NodeId: 7) LocalTableScan [CodegenId: ] [StageIds: 1,2] Metrics: [number of output rows: 2]
+(NodeId: 6) Exchange [CodegenId: ] [StageIds: 1] Metrics: [data size total (min, med, max): 142.0 B (71.0 B, 71.0 B, 71.0 B)]
+(NodeId: 5) Sort [CodegenId: 4] [StageIds: 2] Metrics: [sort time total (min, med, max): 0 ms (0 ms, 0 ms, 0 ms) - peak memory total (min, med, max): 44.5 MB (64.0 KB, 64.0 KB, 16.1 MB) - spill size total (min, med, max): 0.0 B (0.0 B, 0.0 B, 0.0 B)]
+(NodeId: 4) WholeStageCodegen [CodegenId: ] [StageIds: 2] Metrics: [duration total (min, med, max): 2.3 s (1 ms, 4 ms, 69 ms)]
+(NodeId: 3) SortMergeJoin [CodegenId: 1] [StageIds: 2] Metrics: [number of output rows: 2]
+(NodeId: 2) Project [CodegenId: 1] [StageIds: ] Metrics: []
+(NodeId: 1) WholeStageCodegen [CodegenId: ] [StageIds: 2] Metrics: [duration total (min, med, max): 267 ms (0 ms, 2 ms, 55 ms)]
+(NodeId: 0) TakeOrderedAndProject [CodegenId: ] [StageIds: ] Metrics: []
+== SQL Metrics printed in 3 msecs ==
